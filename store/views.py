@@ -81,3 +81,25 @@ def signup(request):
             return render(request, 'store/signup.html', context)
     else:
         return render(request, 'store/signup.html')
+
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'store/login.html')
+    else:
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        customer = Customer.get_customer_by_email(email)
+
+        error_message = None
+        if customer:
+            flag = check_password(password, customer.password)
+            if flag:
+                return redirect('index')
+            else:
+                error_message = "Email or Password invalid !!"
+        else:
+            error_message = "Email or Password invalid !!"
+
+        return render(request, 'store/login.html', {'error': error_message})

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'store/style.css' %}" />
+
+<div class="signup-form">
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+
+        <h2>Login Here</h2>
+
+        <p class="hint-text">Login to access your Dashboard. It's nice to meet you.</p>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- email -->
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" value="{{ value.email }}">
+        </div>
+
+        <!-- password -->
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" >
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
+        </div>
+    </form>
+    <div class="text-center">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></div>
+</div>
+
+{% endblock %}
