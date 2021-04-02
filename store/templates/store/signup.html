@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'store/style.css' %}" />
+
+<div class="signup-form">
+    <form action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+
+        <h2>Sign Up</h2>
+
+        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- firstname | lastname -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{ value.first_name }}"></div>
+                <div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ value.last_name }}"></div>
+            </div>
+        </div>
+
+        <!-- phone -->
+        <div class="form-group">
+            <input type="text" class="form-control" name="mobile_no" placeholder="Mobile No" value="{{ value.mobile_no }}">
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" value="{{ value.email }}">
+        </div>
+
+        <!-- password -->
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" >
+        </div>
+
+        <!--		<div class="form-group">-->
+        <!--            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">-->
+        <!--        </div>-->
+
+        <div class="form-group">
+            <label class="form-check-label"><input type="checkbox"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+        </div>
+    </form>
+    <div class="text-center">Already have an account? <a href="#">Sign in</a></div>
+</div>
+
+{% endblock %}
