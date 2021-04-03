@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load cart %}
+
 {% block content %}
 
 <div class="container-fluid mt-2">
@@ -9,30 +11,64 @@
             <div class="list-group">
                 <a href="/" class="list-group-item list-group-item-action">All Products</a>
                 {% for category in categories %}
-                <a href="/?category={{category.id}}" class="list-group-item list-group-item-action">{{ category.name }}</a>
+                <a href="/?category={{category.id}}" class="list-group-item list-group-item-action">
+                    {{ category.name }}</a>
                 {% endfor %}
             </div>
         </div>
 
         <!-- all products -->
-        <div id="products" class="col-lg-8 mx-auto">
+        <div id="products" class="col-lg-9 mx-auto">
             <div class="row mx-auto">
+
                 {% for product in products %}
-                <div class="card mx-auto mb-3" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ product.image.url }}" alt="...">
+
+                <div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="..." height="300px">
                     <div class="card-body">
                         <p class="card-title"><b>{{ product.name }}</b></p>
                         <p class="card-text">&#8377; {{ product.price }}</p>
-                        <a href="#" class="btn btn-warning btn-sm"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg> Add to Cart</a>
+                    </div>
+
+                    <div class="card-footer p-0 nu-gutters">
+
+                        {% if product|is_in_cart:request.session.cart %}
+
+                        <div class="row nu-gutters">
+                            <form action="{% url 'index' %}#{{ product.id }}" method="POST" class="col-2">
+                                {% csrf_token %}
+                                <input hidden type="text" name="product" value="{{ product.id }}">
+                                <input hidden type="text" name="remove" value="True">
+                                <input type="submit" value=" - " class="btn btn-block btn-light border-right">
+                            </form>
+                            <div class="text-center col">
+                                {{ product|cart_quantity:request.session.cart }} in Cart
+                            </div>
+                            <form action="{% url 'index' %}#{{ product.id }}" method="POST" class="col-2">
+                                {% csrf_token %}
+                                <input hidden type="text" name="product" value="{{ product.id }}">
+                                <input type="submit" value=" + " class="btn btn-block btn-light border-left">
+                            </form>
+                        </div>
+                        {% else %}
+                        <form action="{% url 'index' %}#{{ product.id }}" method="POST" class="btn-block">
+                            {% csrf_token %}
+                            <input hidden type="text" name="product" value="{{ product.id }}">
+                            <button type="submit" class="float-right btn btn-warning form-control">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-cart" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                                Add to Cart
+                            </button>
+                        </form>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>
-
 </div>
 
 {% endblock %}
