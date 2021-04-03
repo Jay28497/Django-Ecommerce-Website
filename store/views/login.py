@@ -20,7 +20,7 @@ class Login(View):
             if flag:
                 # session store
                 request.session['customer_id'] = customer.id
-                request.session['customer_email'] = customer.email
+                # request.session['customer_email'] = customer.email
                 return redirect('index')
             else:
                 error_message = "Email or Password invalid !!"
@@ -28,3 +28,8 @@ class Login(View):
             error_message = "Email or Password invalid !!"
 
         return render(request, 'store/login.html', {'error': error_message})
+
+
+def logout(request):
+    request.session.clear()
+    return redirect('login')
