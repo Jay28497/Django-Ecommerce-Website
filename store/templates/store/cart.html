@@ -8,42 +8,77 @@
 <div class="container">
     <div class="border rounded p-4 m-4">
         <p class="display-5 pl-4 ml-4">Your Cart</p>
+        <hr>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>Serial No.</th>
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
+            <tr>
+                <th>Serial No.</th>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
             </thead>
             <tbody>
-                {% for product in products %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td><img class="rounded-circle" src="{{ product.image.url }}" height="60px"></td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price|currency }}</td>
-                    <td>{{ product|cart_quantity:request.session.cart }}</td>
-                    <td>{{ product|price_total:request.session.cart|currency }}</td>
-                </tr>
-                {% endfor %}
+            {% for product in products %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><img class="rounded-circle" src="{{ product.image.url }}" height="60px"></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price|currency }}</td>
+                <td>{{ product|cart_quantity:request.session.cart }}</td>
+                <td>{{ product|price_total:request.session.cart|currency }}</td>
+            </tr>
+            {% endfor %}
             </tbody>
             <tfoot>
-                <tr>
-                    <th colspan="4"></th>
-                    <th>Total</th>
-                    <th>{{ products|total_cart_price:request.session.cart|currency }}</th>
-                </tr>
+            <tr>
+                <th colspan="4"></th>
+                <th>Total</th>
+                <th>{{ products|total_cart_price:request.session.cart|currency }}</th>
+            </tr>
             </tfoot>
         </table>
 
         <div class="m-3 p-3 d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="#" class="btn btn-outline-warning border rounded col-lg-3 float-right">Check out</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+               class="btn btn-outline-warning border rounded col-lg-3 float-right">Check out</a>
         </div>
 
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Check Out Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="m-2 p-3">
+                    <form action="{% url 'checkout' %}" method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-2">
+                            <label class="col-form-label">Address</label>
+                            <input type="text" name="address" class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label class="col-form-label">Phone</label>
+                            <input type="text" name="phone" class="form-control">
+                        </div>
+                        <!--                    <div class="mt-4 mb-2 d-md-flex justify-content-md-end">-->
+                        <!--                        <input type="submit" class="btn btn-warning col-lg-6" value="Place Order">-->
+                        <!--                    </div>-->
+                        <input type="submit" class="btn float-right btn-outline-warning col-lg-6" value="Place Order">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
