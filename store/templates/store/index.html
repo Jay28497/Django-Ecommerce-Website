@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load cart %}
+{% load custom_filter %}
 
 {% block content %}
 
@@ -27,7 +28,7 @@
                     <img class="card-img-top" src="{{ product.image.url }}" alt="..." height="300px">
                     <div class="card-body">
                         <p class="card-title"><b>{{ product.name }}</b></p>
-                        <p class="card-text">&#8377; {{ product.price }}</p>
+                        <p class="card-text">{{ product.price|currency }}</p>
                     </div>
 
                     <div class="card-footer p-0 nu-gutters">

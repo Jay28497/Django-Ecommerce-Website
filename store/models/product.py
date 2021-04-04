@@ -20,6 +20,10 @@ class Product(models.Model):
         else:
             return Product.objects.all()
 
+    @staticmethod
+    def get_products_by_id(ids):
+        return Product.objects.filter(id__in=ids)
+
     def __str__(self):
         return self.name
 

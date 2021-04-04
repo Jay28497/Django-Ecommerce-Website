@@ -34,15 +34,15 @@
             <ul class="navbar-nav d-flex">
                 {% if request.session.customer_id %}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Cart</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
                 </li>
                 {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'cart' %}">Cart</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Signup</a>
                 </li>
