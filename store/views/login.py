@@ -23,6 +23,7 @@ class Login(View):
             if flag:
                 # session store
                 request.session['customer_id'] = customer.id
+                request.session['customer_name'] = customer.first_name
                 # request.session['customer_email'] = customer.email
 
                 if Login.return_url:

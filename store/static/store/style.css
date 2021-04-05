@@ -86,3 +86,12 @@ body {
 .signup-form form a:hover {
 	text-decoration: underline;
 }
+#text{
+    color: #292a2b;
+}
+#link{
+    color: #1053c9;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
