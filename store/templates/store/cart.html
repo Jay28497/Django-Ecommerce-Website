@@ -65,16 +65,16 @@
 
                         <div class="mb-2">
                             <label class="col-form-label">Address</label>
-                            <input type="text" name="address" class="form-control">
+                            <textarea name="address" class="form-control" placeholder="Enter your address here.." required></textarea>
                         </div>
                         <div class="mb-2">
-                            <label class="col-form-label">Phone</label>
-                            <input type="text" name="phone" class="form-control">
+                            <label class="col-form-label">Mobile No</label>
+                            <input type="text" name="phone" class="form-control" placeholder="e.g. 012345679" pattern="[0-9]{10}" required>
                         </div>
-                        <!--                    <div class="mt-4 mb-2 d-md-flex justify-content-md-end">-->
-                        <!--                        <input type="submit" class="btn btn-warning col-lg-6" value="Place Order">-->
-                        <!--                    </div>-->
-                        <input type="submit" class="btn float-right btn-outline-warning col-lg-6" value="Place Order">
+                        <div class="mt-4 mb-2 d-md-flex justify-content-md-end">
+                            <input type="submit" class="btn btn-warning col-lg-6" value="Place Order">
+                        </div>
+                        <!-- <input type="submit" class="btn float-right btn-outline-warning col-lg-6" value="Place Order">-->
                     </form>
                 </div>
             </div>
