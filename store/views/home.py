@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from store.models.product import Product
 from store.models.category import Category
 from django.views import View
@@ -29,25 +29,21 @@ class Index(View):
         return redirect('index')
 
     def get(self, request):
-        return HttpResponseRedirect(f'/store{request.get_full_path()[1:]}')
+        # session clear cart
+        # request.session.get('cart').clear()
 
+        cart = request.session.get('cart')
+        if not cart:
+            request.session['cart'] = {}
 
-def store(request):
-    # session clear cart
-    # request.session.get('cart').clear()
+        categories = Category.get_all_categories()
+        category_id = request.GET.get('category')
 
-    cart = request.session.get('cart')
-    if not cart:
-        request.session['cart'] = {}
+        if category_id:
+            products = Product.get_all_products_by_category_id(category_id)
+        else:
+            products = Product.get_all_products()
 
-    categories = Category.get_all_categories()
-    category_id = request.GET.get('category')
-
-    if category_id:
-        products = Product.get_all_products_by_category_id(category_id)
-    else:
-        products = Product.get_all_products()
-
-    context = {'products': products, 'categories': categories}
-    # print("You are: ", request.session.get('customer_email'))
-    return render(request, 'store/index.html', context)
+        context = {'products': products, 'categories': categories}
+        # print("You are: ", request.session.get('customer_email'))
+        return render(request, 'store/index.html', context)
