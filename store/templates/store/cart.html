@@ -4,10 +4,27 @@
 
 {% load cart %}
 {% load custom_filter %}
+{% load static %}
 
 <div class="container">
     <div class="border rounded p-4 m-4">
-        <p class="display-5 pl-4 ml-4">Your Cart</p>
+
+        <!--        <div class="text-center">-->
+        <!--            <h3 class="display-5">Your Cart</h3>-->
+        <!--            <img src="{% static 'store/image/ecommerce.png' %}" alt="eshop" height="200px" width="500px">-->
+        <!--        </div>-->
+
+        <div class="row mx-auto">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-4 pt-5">
+                <h3 class="display-5">Shopping Cart</h3>
+            </div>
+            <div class="col-lg-7">
+                <img src="{% static 'store/image/cart.png' %}" alt="eshop" height="200px" width="500px">
+            </div>
+        </div>
+
         <hr>
         <table class="table table-hover">
             <thead>

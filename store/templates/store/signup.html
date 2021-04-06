@@ -10,6 +10,10 @@
     <form action="{% url 'signup' %}" method="POST">
         {% csrf_token %}
 
+        <div class="text-center col">
+            <img src="{% static 'store/image/jkshop.png' %}" alt="eshop" height="200px" width="350px">
+        </div>
+
         <h2>Sign Up</h2>
 
         <p class="hint-text">Create your account. It's free and only takes a minute.</p>

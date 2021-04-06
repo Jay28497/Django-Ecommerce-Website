@@ -10,6 +10,10 @@
     <form action="{% url 'login' %}" method="POST">
         {% csrf_token %}
 
+        <div class="text-center col">
+            <img src="{% static 'store/image/jkshop.png' %}" alt="eshop" height="200px" width="350px">
+        </div>
+
         <h2>Login Here</h2>
 
         <p class="hint-text">Login to access your Dashboard. It's nice to meet you.</p>
