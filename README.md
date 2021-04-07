@@ -11,6 +11,24 @@ E-Commerce websites are online portals that facilitate online transactions of go
   * After customer did signup or login they can add products in cart and purchase it.
   
   * Then admin will check these order and confirm for deliver products to customers.
+
+## Project View
+  
+  1. Home Page
+  
+  <img src="static/store/image/home_page.png" height="300px" width="650px">
+  
+  1. Login Page
+  
+  <img src="static/store/image/login_page.png" height="300px" width="650px">
+  
+  1. Cart Page
+  
+  <img src="static/store/image/cart_page.png" height="300px" width="650px">
+  
+  1. Orders Page
+  
+  <img src="static/store/image/orders.png" height="300px" width="650px">
   
 ## Technical Features
 
@@ -39,24 +57,6 @@ E-Commerce websites are online portals that facilitate online transactions of go
   ### `Middleware`
   
   ### `Filter`
-  
-## Project View
-  
-  1. Home Page
-  
-  <img src="static/store/home_page.png" height="300px" width="650px">
-  
-  1. Login Page
-  
-  <img src="static/store/login_page.png" height="300px" width="650px">
-  
-  1. Cart Page
-  
-  <img src="static/store/cart_page.png" height="300px" width="650px">
-  
-  1. Orders Page
-  
-  <img src="static/store/orders.png" height="300px" width="650px">
   
 ## Learn More
 
