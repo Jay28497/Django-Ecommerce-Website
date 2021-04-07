@@ -12,23 +12,25 @@ E-Commerce websites are online portals that facilitate online transactions of go
   
   * Then admin will check these order and confirm for deliver products to customers.
 
+
 ## Project View
   
   1. Home Page
   
-  <img src="static/store/image/home_page.png" height="300px" width="650px">
+  <img src="static/store/image/home_page.png" height="350px" width="700px">
   
   1. Login Page
   
-  <img src="static/store/image/login_page.png" height="300px" width="650px">
+  <img src="static/store/image/login_page.png" height="350px" width="700px">
   
   1. Cart Page
   
-  <img src="static/store/image/cart_page.png" height="300px" width="650px">
+  <img src="static/store/image/cart_page.png" height="350px" width="700px">
   
   1. Orders Page
   
-  <img src="static/store/image/orders.png" height="300px" width="650px">
+  <img src="static/store/image/orders_page.png" height="350px" width="700px">
+  
   
 ## Technical Features
 
@@ -57,6 +59,7 @@ E-Commerce websites are online portals that facilitate online transactions of go
   ### `Middleware`
   
   ### `Filter`
+  
   
 ## Learn More
 
