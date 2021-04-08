@@ -56,8 +56,12 @@ class Signup(View):
             error_message = 'Last Name must be 4 char long or more'
         elif not customer.mobile_no:
             error_message = 'Mobile Number required !!'
-        elif len(customer.mobile_no) < 10:
-            error_message = 'Mobile Number must be 10 char Long'
+        elif not customer.mobile_no.isdigit():
+            error_message = 'Mobile Number must be 10 char Long digit e.g. 0123456789 !!'
+        elif len(customer.mobile_no) < 10 or not customer.mobile_no.isdigit():
+            error_message = 'Mobile Number must be 10 char Long digit !!'
+        elif len(customer.mobile_no) > 10:
+            error_message = 'Mobile Number must be 10 char Long digit !!'
         elif len(customer.email) < 5:
             error_message = 'Email must be valid format and 5 char long !!'
         elif customer.email_exists():
