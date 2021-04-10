@@ -19,15 +19,15 @@ E-Commerce websites are online portals that facilitate online transactions of go
   
   <img src="static/store/image/home_page.png" height="350px" width="700px">
   
-  1. Login Page
+  2. Login Page
   
   <img src="static/store/image/login_page.png" height="350px" width="700px">
   
-  1. Cart Page
+  3. Cart Page
   
   <img src="static/store/image/cart_page.png" height="350px" width="700px">
   
-  1. Orders Page
+  4. Orders Page
   
   <img src="static/store/image/orders_page.png" height="350px" width="700px">
   
